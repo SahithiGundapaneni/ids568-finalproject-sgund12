@@ -1,0 +1,42 @@
+[
+  {
+    "feature": "prompt_length",
+    "psi": 5.4943,
+    "psi_status": "\ud83d\udea8 DRIFTED",
+    "ks_stat": 0.705,
+    "ks_p": 0.0,
+    "ref_mean": 200.65,
+    "prod_mean": 347.413,
+    "mean_shift": 146.763
+  },
+  {
+    "feature": "response_tokens",
+    "psi": 5.0896,
+    "psi_status": "\ud83d\udea8 DRIFTED",
+    "ks_stat": 0.624,
+    "ks_p": 0.0,
+    "ref_mean": 177.68,
+    "prod_mean": 277.277,
+    "mean_shift": 99.597
+  },
+  {
+    "feature": "latency_s",
+    "psi": 0.1352,
+    "psi_status": "\u26a0\ufe0f  MONITOR",
+    "ks_stat": 0.122,
+    "ks_p": 1e-06,
+    "ref_mean": 0.4849,
+    "prod_mean": 0.5649,
+    "mean_shift": 0.0799
+  },
+  {
+    "feature": "groundedness",
+    "psi": 0.6826,
+    "psi_status": "\ud83d\udea8 DRIFTED",
+    "ks_stat": 0.302,
+    "ks_p": 0.0,
+    "ref_mean": 0.7333,
+    "prod_mean": 0.6515,
+    "mean_shift": -0.0818
+  }
+]

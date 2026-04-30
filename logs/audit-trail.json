@@ -1,0 +1,80 @@
+[
+  {
+    "event_id": "AT-001",
+    "timestamp": "2026-03-01T09:00:00Z",
+    "event_type": "model_deployment",
+    "model_version": "v1.0",
+    "model_name": "llama3.2:3b",
+    "description": "Initial deployment of baseline 3B model via Ollama",
+    "approved_by": "sgund12",
+    "approval_method": "manual_review",
+    "notes": "Baseline established. Groundedness target >= 0.70."
+  },
+  {
+    "event_id": "AT-002",
+    "timestamp": "2026-03-15T14:30:00Z",
+    "event_type": "monitoring_alert",
+    "alert_name": "DriftWarning",
+    "metric": "input_drift_score",
+    "value": 0.31,
+    "threshold": 0.30,
+    "description": "Drift score exceeded warning threshold (0.30) for >5 minutes",
+    "action_taken": "ML team notified; investigation initiated",
+    "resolved": false
+  },
+  {
+    "event_id": "AT-003",
+    "timestamp": "2026-03-22T10:00:00Z",
+    "event_type": "experiment_start",
+    "experiment_id": "EXP-001",
+    "description": "A/B test started: Model A (3B) vs Model B (8B)",
+    "traffic_split": "50/50",
+    "approved_by": "sgund12",
+    "approval_method": "experiment_spec_review"
+  },
+  {
+    "event_id": "AT-004",
+    "timestamp": "2026-04-01T16:45:00Z",
+    "event_type": "monitoring_alert",
+    "alert_name": "HighP99Latency",
+    "metric": "p99_latency_seconds",
+    "value": 3.1,
+    "threshold": 2.0,
+    "description": "P99 latency exceeded 2.0s during traffic spike",
+    "action_taken": "Investigated; root cause identified as GPU KV-cache eviction under concurrent load. Added max_concurrent_requests=3 limit.",
+    "resolved": true,
+    "resolved_at": "2026-04-01T17:30:00Z"
+  },
+  {
+    "event_id": "AT-005",
+    "timestamp": "2026-04-10T09:00:00Z",
+    "event_type": "experiment_result",
+    "experiment_id": "EXP-001",
+    "description": "A/B test EXP-001 concluded. Model B shows +6.4pp groundedness (p<0.001). Recommendation: ship Model B.",
+    "decision": "ship_model_b",
+    "decided_by": "sgund12"
+  },
+  {
+    "event_id": "AT-006",
+    "timestamp": "2026-04-15T11:00:00Z",
+    "event_type": "model_deployment",
+    "model_version": "v1.1",
+    "model_name": "llama3.2:8b",
+    "description": "Model B deployed as new production baseline via canary rollout (10% -> 50% -> 100%)",
+    "approved_by": "sgund12",
+    "approval_method": "ab_test_result_review",
+    "rollout_completed_at": "2026-04-17T09:00:00Z"
+  },
+  {
+    "event_id": "AT-007",
+    "timestamp": "2026-04-28T08:00:00Z",
+    "event_type": "drift_intervention",
+    "metric": "prompt_length_psi",
+    "value": 0.52,
+    "threshold": 0.20,
+    "description": "Prompt length PSI reached 0.52 (critical). Groundedness dropped to 0.65. Retraining pipeline triggered.",
+    "action_taken": "Retraining initiated with 2,000 most recent production samples",
+    "resolved": false,
+    "estimated_resolution": "2026-05-07"
+  }
+]
