@@ -4,8 +4,8 @@
     "timestamp": "2026-03-01T09:00:00Z",
     "event_type": "model_deployment",
     "model_version": "v1.0",
-    "model_name": "llama3.2:3b",
-    "description": "Initial deployment of baseline 3B model via Ollama",
+    "model_name": "mistral:7b-instruct",
+    "description": "Initial deployment of mistral:7b-instruct (default system prompt) via Ollama",
     "approved_by": "sgund12",
     "approval_method": "manual_review",
     "notes": "Baseline established. Groundedness target >= 0.70."
@@ -59,8 +59,8 @@
     "timestamp": "2026-04-15T11:00:00Z",
     "event_type": "model_deployment",
     "model_version": "v1.1",
-    "model_name": "llama3.2:8b",
-    "description": "Model B deployed as new production baseline via canary rollout (10% -> 50% -> 100%)",
+    "model_name": "mistral:7b-instruct (enhanced prompt)",
+    "description": "Model B deployed — mistral:7b-instruct with enhanced grounding system prompt via canary rollout (10% -> 50% -> 100%)",
     "approved_by": "sgund12",
     "approval_method": "ab_test_result_review",
     "rollout_completed_at": "2026-04-17T09:00:00Z"

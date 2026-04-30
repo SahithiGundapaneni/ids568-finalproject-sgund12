@@ -3,8 +3,8 @@ Component 2: A/B Test Design & Simulation
 IDS 568 Final Project - Sreesahithi Gundapaneni (sgund12)
 
 Simulates an A/B experiment comparing two LLM model variants:
-  - Model A (Baseline):  llama3.2:3b  — smaller, faster
-  - Model B (Challenger): llama3.2:8b — larger, more accurate
+  - Model A (Baseline):  mistral:7b-instruct with default system prompt
+  - Model B (Challenger): mistral:7b-instruct with enhanced grounding system prompt
 
 Hypothesis: Model B (larger) produces higher groundedness scores
 than Model A, with acceptable latency trade-off.

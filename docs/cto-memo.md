@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-Our LLM Inference API (powered by Meta's LLaMA 3.2 model via Ollama) is **conditionally ready for production** with three high-priority issues requiring attention before full-scale deployment. Two issues are addressable within one sprint; one requires a medium-term roadmap investment.
+Our LLM Inference API (powered by **mistral:7b-instruct** via Ollama, 4.4GB, running locally on Apple Silicon) is **conditionally ready for production** with three high-priority issues requiring attention before full-scale deployment. Two issues are addressable within one sprint; one requires a medium-term roadmap investment.
 
 ---
 
@@ -34,7 +34,7 @@ Inference request logs currently store prompt text without PII screening. If a u
 ## What Is Working Well
 
 - **Monitoring infrastructure** is fully operational with real-time latency, error rate, throughput, and drift score dashboards
-- **A/B testing framework** is in place and has already identified that our 8B parameter model delivers +6.4% groundedness improvement with acceptable latency trade-off — recommend shipping Model B
+- **A/B testing framework** is in place and has already identified that the enhanced grounding system prompt (Model B) delivers +6.4% groundedness improvement with acceptable latency trade-off — recommend shipping Model B
 - **Governance documentation** (model card, lineage diagram, risk register, audit trail) is complete and ready for compliance review
 - **Reliability** is high — 96.8% success rate with no systemic failure modes identified
 
@@ -47,7 +47,7 @@ Inference request logs currently store prompt text without PII screening. If a u
 | 1 | Deploy PII detection on log pipeline | Engineering | 1 day | Low |
 | 2 | Add hallucination disclaimer to all responses | Product | 2 days | None |
 | 3 | Trigger model retraining with production data | ML Team | 3 weeks | Medium |
-| 4 | Ship Model B (8B) via canary rollout | Engineering | 1 week | Low |
+| 4 | Ship Model B (enhanced prompt) via canary rollout | Engineering | 1 week | Low |
 | 5 | Implement LLM-as-judge evaluation pipeline | ML Research | 6 weeks | High |
 
 ---

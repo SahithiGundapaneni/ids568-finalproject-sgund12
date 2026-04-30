@@ -19,7 +19,7 @@ See `docs/system-boundary-diagram.png` for the visual diagram.
 [FastAPI Wrapper]  ← rate limiting, auth, request logging
      │
      ▼
-[Ollama LLM Engine]  ← llama3.2 (3B or 8B via A/B router)
+[Ollama LLM Engine]  ← mistral:7b-instruct (A/B router selects prompt variant)
      │
      ▼
 [Output Filter]  ← PII detection, content safety check

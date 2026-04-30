@@ -93,7 +93,7 @@ def arrow(ax, x1, y1, x2, y2, label='', color='#a0a0a0'):
 box(ax, 5.5, 7.4, 3.0, 0.9, '👤 User Request', '#2d6a9f', 10)
 box(ax, 5.5, 6.0, 3.0, 0.9, '🛡 Input Validator\n(length, PII, injection)', '#6c5ce7', 8)
 box(ax, 5.5, 4.6, 3.0, 0.9, '⚙️ FastAPI Wrapper\n(auth, rate limit, logging)', '#00b894', 8)
-box(ax, 5.5, 3.2, 3.0, 0.9, '🧠 Ollama LLM Engine\n(llama3.2:3b or 8b)', '#e17055', 8)
+box(ax, 5.5, 3.2, 3.0, 0.9, 'Ollama LLM Engine\n(mistral:7b-instruct)', '#e17055', 8)
 box(ax, 5.5, 1.8, 3.0, 0.9, '🔍 Output Filter\n(PII detect, content safety)', '#6c5ce7', 8)
 box(ax, 5.5, 0.5, 3.0, 0.9, '📤 Response + Metrics', '#2d6a9f', 9)
 
