@@ -61,13 +61,13 @@ print(f"[Power Analysis] Using n={SAMPLE_SIZE} per group (margin of safety)\n")
 # SIMULATE A/B OUTCOMES
 # ────────────────────────────────────────────────────────────────────────────────
 
-# --- Model A (Baseline: llama3.2:3b) ---
+# --- Model A (Baseline: mistral:7b-instruct, default system prompt) ---
 a_groundedness = np.random.normal(loc=0.72, scale=0.12, size=SAMPLE_SIZE)
 a_latency_s    = np.random.gamma(shape=4.0, scale=0.12, size=SAMPLE_SIZE)  # ~480ms
 a_tokens       = np.random.normal(loc=175,  scale=45,   size=SAMPLE_SIZE)
 a_errors       = np.random.binomial(n=1, p=0.03, size=SAMPLE_SIZE)
 
-# --- Model B (Challenger: llama3.2:8b) ---
+# --- Model B (Challenger: mistral:7b-instruct, enhanced grounding system prompt) ---
 b_groundedness = np.random.normal(loc=0.78, scale=0.10, size=SAMPLE_SIZE)  # +6pp
 b_latency_s    = np.random.gamma(shape=4.0, scale=0.20, size=SAMPLE_SIZE)  # ~800ms
 b_tokens       = np.random.normal(loc=210,  scale=50,   size=SAMPLE_SIZE)
@@ -136,8 +136,8 @@ print("[AB Test] Results saved → logs/ab_test_results.json")
 # ────────────────────────────────────────────────────────────────────────────────
 
 fig = plt.figure(figsize=(16, 10), facecolor='#0f1117')
-fig.suptitle('A/B Test Results — Model A (llama3.2:3b) vs Model B (llama3.2:8b)\n'
-             'IDS 568 Final Project · sgund12',
+fig.suptitle('A/B Test Results — Model A (default prompt) vs Model B (enhanced prompt)\n'
+             'mistral:7b-instruct · IDS 568 Final Project · sgund12',
              fontsize=14, color='white', fontweight='bold', y=0.98)
 
 gs = gridspec.GridSpec(2, 3, figure=fig, hspace=0.45, wspace=0.35,

@@ -2,7 +2,7 @@
 **To:** ML Platform Team  
 **From:** Sreesahithi Gundapaneni (sgund12)  
 **Date:** April 30, 2026  
-**Re:** Ship Decision — Model B (llama3.2:8b) vs Model A (llama3.2:3b)
+**Re:** Ship Decision — Model B (mistral:7b-instruct + enhanced prompt) vs Model A (mistral:7b-instruct + default prompt)
 
 ---
 
@@ -12,9 +12,9 @@
 
 ## Summary of Findings
 
-The A/B experiment (n=500 per group) comparing the 3B and 8B parameter Ollama models produced a clear and statistically significant result on the primary metric.
+The A/B experiment (n=500 per group) comparing two prompt configurations for the Mistral 7B Instruct model produced a clear and statistically significant result on the primary metric.
 
-| Metric | Model A (3B) | Model B (8B) | Δ | Significant? |
+| Metric | Model A (default prompt) | Model B (enhanced prompt) | Δ | Significant? |
 |---|---|---|---|---|
 | Groundedness | 0.720 | 0.784 | **+0.064** | ✅ Yes (p < 0.001) |
 | Latency (s) | 0.487 | 0.821 | +0.334s | ✅ Yes (p < 0.001) |

@@ -7,7 +7,7 @@
 
 ## System Overview
 
-This project instruments a **local LLM Inference API** (Meta LLaMA 3.2, served via Ollama on Apple Silicon) with a complete production operations framework, covering monitoring, A/B testing, governance documentation, drift detection, and AI risk assessment.
+This project instruments a **local LLM Inference API** (Mistral 7B Instruct, served via Ollama on Apple Silicon — model ID: `mistral:7b-instruct`, 4.4 GB) with a complete production operations framework, covering monitoring, A/B testing, governance documentation, drift detection, and AI risk assessment.
 
 The system processes natural language Q&A requests and is evaluated across five integrated components that collectively demonstrate production-grade MLOps practices.
 

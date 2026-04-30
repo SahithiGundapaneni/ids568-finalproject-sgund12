@@ -22,10 +22,10 @@ ax.set_title('Model Lineage Diagram — Data → Training → Evaluation → Dep
              color='white', fontsize=13, fontweight='bold', pad=12)
 
 nodes = [
-    (1.2, 2.5, 'Public Web\nCorpus\n(Meta Training)', '#2d6a9f', '①'),
-    (3.8, 2.5, 'LLaMA 3.2\nPre-training\n(Meta AI)', '#2d6a9f', '②'),
+    (1.2, 2.5, 'Public Web\nCorpus\n(Mistral Training)', '#2d6a9f', '①'),
+    (3.8, 2.5, 'Mistral 7B\nPre-training\n(Mistral AI)', '#2d6a9f', '②'),
     (6.4, 2.5, 'GGUF\nQuantization\n(Q4_K_M)', '#6c5ce7', '③'),
-    (9.0, 2.5, 'Ollama\nLocal Serving\n(llama3.2:3b/8b)', '#00b894', '④'),
+    (9.0, 2.5, 'Ollama\nLocal Serving\n(mistral:7b-instruct)', '#00b894', '④'),
     (11.6, 2.5, 'A/B Test\nEvaluation\n(EXP-001)', '#e17055', '⑤'),
     (14.2, 2.5, 'Production\nMonitoring\n(Prometheus)', '#fdcb6e', '⑥'),
 ]
@@ -51,7 +51,7 @@ for i in range(len(nodes)-1):
 annotations = [
     (1.2, 1.1, 'Web, books, code\n~unknown volume'),
     (3.8, 1.1, 'Transformer arch\nknowledge cutoff ~2024'),
-    (6.4, 1.1, '4-bit quantization\nreduces memory 4×'),
+    (6.4, 1.1, '4-bit quantization\n4.4 GB on disk'),
     (9.0, 1.1, 'FastAPI wrapper\nlocal Metal GPU'),
     (11.6, 1.1, 'n=500/group\nGroundedness primary'),
     (14.2, 1.1, 'Prometheus metrics\nDrift + latency'),

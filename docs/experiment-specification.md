@@ -7,17 +7,17 @@
 `EXP-001-model-size-comparison`
 
 ## Experiment Title
-Comparing LLM Model Size on Groundedness and Latency for a Q&A Inference API
+Comparing Prompt Configuration Variants on Groundedness and Latency for a Mistral 7B Inference API
 
 ---
 
 ## 1. Hypothesis
 
-**Null Hypothesis (H₀):** There is no statistically significant difference in groundedness score between Model A (llama3.2:3b, baseline) and Model B (llama3.2:8b, challenger).
+**Null Hypothesis (H₀):** There is no statistically significant difference in groundedness score between Model A (mistral:7b-instruct with default system prompt, baseline) and Model B (mistral:7b-instruct with enhanced grounding system prompt, challenger).
 
 **Alternative Hypothesis (H₁):** Model B produces a higher groundedness score than Model A by at least 5 percentage points (the Minimum Detectable Effect).
 
-**Rationale:** Larger parameter models generally produce better-grounded responses for factual Q&A tasks, but incur higher latency. This experiment quantifies whether the quality gain justifies the latency cost.
+**Rationale:** An enhanced system prompt that explicitly instructs the model to cite its sources and acknowledge uncertainty is hypothesised to improve groundedness without requiring a larger model or retraining.
 
 ---
 

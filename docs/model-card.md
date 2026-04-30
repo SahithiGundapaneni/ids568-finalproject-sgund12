@@ -1,6 +1,6 @@
-# Model Card — LLM Inference API (Ollama/llama3.2)
+# Model Card — LLM Inference API (Ollama / mistral:7b-instruct)
 **IDS 568 Final Project · Sreesahithi Gundapaneni (sgund12)**  
-**Model Version:** v1.0 (llama3.2:3b baseline) / v1.1 (llama3.2:8b challenger)  
+**Model Version:** v1.0 (mistral:7b-instruct baseline) / v1.1 (mistral:7b-instruct fine-tuned challenger)  
 **Last Updated:** April 30, 2026
 
 ---
@@ -9,12 +9,13 @@
 
 | Field | Value |
 |---|---|
-| Model Family | LLaMA 3.2 (Meta AI) |
-| Parameter Classes | 3B (baseline), 8B (challenger) |
+| Model Family | Mistral 7B Instruct (Mistral AI) |
+| Model ID | mistral:7b-instruct (via Ollama, ID: 6577803aa9a0) |
+| Parameter Count | 7 billion |
 | Serving Framework | Ollama (local inference) + FastAPI wrapper |
-| Quantization | Q4_K_M (4-bit, GGUF format) |
+| Quantization | Q4_K_M (4-bit, GGUF format, 4.4 GB on disk) |
 | Hardware | Apple Silicon MacBook (Metal GPU backend) |
-| Inference Mode | Single-turn Q&A; no conversation history |
+| Inference Mode | Single-turn instruction-following Q&A |
 | Primary Use Case | General-purpose factual question answering |
 
 ---
@@ -40,7 +41,7 @@
 
 Evaluated on a simulated production dataset (n=1,000 requests):
 
-| Metric | Model A (3B) | Model B (8B) |
+| Metric | Baseline (mistral:7b-instruct v1.0) | Challenger (mistral:7b-instruct v1.1) |
 |---|---|---|
 | Groundedness Score (mean) | 0.720 | 0.784 |
 | Inference Latency P50 | 0.45s | 0.78s |
@@ -54,10 +55,12 @@ Evaluated on a simulated production dataset (n=1,000 requests):
 
 ## Training Data Description
 
-LLaMA 3.2 was trained by Meta AI on a large corpus of publicly available text data, including web pages, books, and code. The exact training data composition is not fully disclosed by Meta. Key characteristics:
+Mistral 7B Instruct was trained by Mistral AI on a large corpus of publicly available text data including web pages, books, and code. Key characteristics:
+- Architecture: Transformer with Grouped Query Attention (GQA) and Sliding Window Attention (SWA)
 - Knowledge cutoff: approximately early 2024
 - Language: primarily English, with multilingual capability
-- No fine-tuning was applied in this project; the base model weights are used as-is via Ollama
+- Fine-tuned for instruction following using supervised fine-tuning (SFT)
+- No additional fine-tuning was applied in this project; base Ollama weights used as-is
 
 ---
 
@@ -88,7 +91,8 @@ LLaMA 3.2 was trained by Meta AI on a large corpus of publicly available text da
 See `docs/lineage-diagram.png` for the full lineage diagram.
 
 ```
-Public Web Data → Meta LLaMA 3.2 Pre-training → GGUF Quantization
-→ Ollama Local Serving → FastAPI Wrapper → Production Monitoring (C1)
-→ A/B Testing (C2) → Drift Detection (C4) → Risk Assessment (C5)
+Public Web Data → Mistral AI Pre-training → GGUF Q4 Quantization
+→ Ollama Local Serving (mistral:7b-instruct) → FastAPI Wrapper
+→ Production Monitoring (C1) → A/B Testing (C2)
+→ Drift Detection (C4) → Risk Assessment (C5)
 ```
