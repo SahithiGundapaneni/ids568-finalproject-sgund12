@@ -118,10 +118,6 @@ This project is intentionally integrated — each component informs the others:
 
 ---
 
-## Academic Integrity & AI Tool Usage
-
-Per the course academic integrity policy, AI tools were used in this project for **scaffolding, code structure suggestions, and document formatting assistance**. All code was executed, tested, and verified locally on my machine. All written analysis, interpretations, risk assessments, and conclusions reflect my own understanding of the system built across Milestones 1–6. The mistral:7b-instruct model used throughout this project is the same model from my Milestone 6 submission (Ollama ID: 6577803aa9a0), and the failure modes documented (RAG misinterpretation, agent reasoning gaps) were observed during that milestone.
-
 ---
 
 **Monitoring is harder than modelling.** Building a robust observability layer required more careful design than the model itself. Deciding what to measure, when to alert, and how to interpret metrics required deep understanding of the system's behaviour.
