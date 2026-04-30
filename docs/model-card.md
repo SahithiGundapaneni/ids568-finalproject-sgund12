@@ -1,6 +1,6 @@
 # Model Card — LLM Inference API (Ollama / mistral:7b-instruct)
 **IDS 568 Final Project · Sreesahithi Gundapaneni (sgund12)**  
-**Model Version:** v1.0 (mistral:7b-instruct baseline) / v1.1 (mistral:7b-instruct fine-tuned challenger)  
+**Model Version:** v1.0 (mistral:7b-instruct, default system prompt) / v1.1 (mistral:7b-instruct, enhanced grounding system prompt)  
 **Last Updated:** April 30, 2026
 
 ---
@@ -69,9 +69,11 @@ Mistral 7B Instruct was trained by Mistral AI on a large corpus of publicly avai
 1. **Knowledge staleness:** The model has no knowledge of events after its training cutoff (~early 2024). Queries about recent events will produce outdated or hallucinated answers.
 2. **Prompt length sensitivity:** Performance degrades noticeably for prompts exceeding 1,500 characters. Drift detection shows this is an active production risk.
 3. **Hallucination on specifics:** The model will confidently generate plausible-sounding but incorrect numerical facts, dates, and citations.
-4. **Language bias:** Non-English queries produce substantially lower groundedness scores (~0.55 vs 0.72 for English).
-5. **Quantization artefacts:** Q4 quantization introduces occasional incoherence in long responses (>500 tokens).
-6. **No refusal mechanism:** The baseline model does not reliably refuse harmful or out-of-scope requests without a system prompt guardrail.
+4. **Acronym and terminology misinterpretation:** mistral:7b-instruct has been observed misinterpreting domain acronyms — for example, interpreting "RAG" as "Reward-Adequate Goal-based" rather than "Retrieval-Augmented Generation" in agentic contexts. This is a known failure mode when technical acronyms appear without sufficient context in the prompt.
+5. **Language bias:** Non-English queries produce substantially lower groundedness scores (~0.55 vs 0.72 for English).
+6. **Quantization artefacts:** Q4 quantization introduces occasional incoherence in long responses (>500 tokens).
+7. **No refusal mechanism:** The baseline model does not reliably refuse harmful or out-of-scope requests without a system prompt guardrail.
+8. **Agent reasoning gaps:** When used in agentic pipelines, the model frequently produces empty reasoning fields or falls back to JSON formatting errors rather than substantive chain-of-thought output.
 
 ---
 

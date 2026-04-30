@@ -29,6 +29,15 @@ Inference request logs currently store prompt text without PII screening. If a u
 
 **Recommended Action:** Deploy PII detection on the log pipeline before accepting external user traffic. This is a one-day engineering task. Timeline: immediate.
 
+### Finding 4: Known Model Reliability Issues from Production Testing (MEDIUM PRIORITY)
+From Milestone 6 production testing, mistral:7b-instruct exhibits two specific reliability issues:
+1. **Acronym misinterpretation** — the model misinterprets "RAG" as "Reward-Adequate Goal-based" when technical context is insufficient in the prompt
+2. **Empty agent reasoning** — in agentic pipelines, reasoning fields are frequently empty or show JSON fallback rather than substantive chain-of-thought
+
+These are documented failure modes that affect system auditability and output reliability.
+
+**Recommended Action:** Add acronym disambiguation and structured reasoning enforcement to the system prompt. Validate reasoning field content before returning agentic responses. Timeline: 1 week.
+
 ---
 
 ## What Is Working Well
@@ -46,9 +55,10 @@ Inference request logs currently store prompt text without PII screening. If a u
 |---|---|---|---|---|
 | 1 | Deploy PII detection on log pipeline | Engineering | 1 day | Low |
 | 2 | Add hallucination disclaimer to all responses | Product | 2 days | None |
-| 3 | Trigger model retraining with production data | ML Team | 3 weeks | Medium |
+| 3 | Fix acronym disambiguation + reasoning enforcement in system prompt | ML Team | 1 week | Low |
 | 4 | Ship Model B (enhanced prompt) via canary rollout | Engineering | 1 week | Low |
-| 5 | Implement LLM-as-judge evaluation pipeline | ML Research | 6 weeks | High |
+| 5 | Trigger model retraining with production data | ML Team | 3 weeks | Medium |
+| 6 | Implement LLM-as-judge evaluation pipeline | ML Research | 6 weeks | High |
 
 ---
 

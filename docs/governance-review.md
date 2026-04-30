@@ -47,15 +47,17 @@ See `docs/system-boundary-diagram.png` for the visual diagram.
 
 ---
 
-## 2. Retrieval Risks (if RAG is added)
+## 2. Retrieval Risks (RAG Pipeline — from Milestone 6)
 
-The current system does not include a retrieval component. However, if RAG is added in a future iteration, the following risks apply:
+This system was extended in Milestone 6 with a RAG pipeline and agentic controller. The following retrieval risks apply to that architecture and inform the current governance posture:
 
-- **Knowledge contamination:** If the retrieval corpus contains outdated or incorrect documents, the LLM will faithfully ground its response in wrong information
-- **Stale knowledge:** Documents added once and never updated create a time-decay problem (particularly for regulatory or policy documents)
-- **Exposure risk:** If the retrieval corpus contains confidential documents, prompt injection could cause the LLM to reveal them
+- **Knowledge contamination:** If the retrieval corpus contains outdated or incorrect documents, mistral:7b-instruct will faithfully ground its response in wrong information with high confidence.
+- **Stale knowledge:** Documents added once and never updated create a time-decay problem (particularly for regulatory or policy documents). A 90-day freshness policy is recommended.
+- **Exposure risk:** If the retrieval corpus contains confidential documents, prompt injection could cause the LLM to reveal them verbatim in responses.
+- **Acronym misinterpretation in retrieval context:** mistral:7b-instruct has demonstrated misinterpreting technical acronyms (e.g. "RAG" as "Reward-Adequate Goal-based") when retrieval context is absent or ambiguous. This is an active risk in any RAG-augmented deployment.
+- **Agent reasoning quality:** In agentic pipelines, the model frequently produces empty reasoning fields or JSON fallback traces rather than substantive chain-of-thought. This reduces auditability of agent decisions.
 
-**Mitigation for future RAG:** Implement corpus freshness timestamps; exclude documents older than 90 days from retrieval; restrict corpus to approved sources only.
+**Mitigations:** Corpus freshness timestamps; approved-source allowlist; acronym disambiguation in system prompt; structured reasoning enforcement via output schema validation.
 
 ---
 

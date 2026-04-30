@@ -19,6 +19,8 @@
 | R-10 | Compliance | Outputs may be used to produce misleading content in regulated domains | Medium | High | 🔴 High | Usage policy enforcement; domain restriction (no medical/legal advice) |
 | R-11 | Compliance | No audit trail for model version changes in production | Low | Medium | 🟡 Medium | Structured audit trail in `logs/audit-trail.json` (see C3) |
 | R-12 | Compliance | Model knowledge cutoff creates staleness risk for time-sensitive queries | High | Medium | 🔴 High | Timestamp all responses with knowledge cutoff date; add RAG for recent data |
+| R-13 | Robustness | mistral:7b-instruct misinterprets technical acronyms (e.g. "RAG" as "Reward-Adequate Goal-based") without sufficient prompt context | High | High | 🔴 High | Add acronym disambiguation to system prompt; validate outputs against known terminology |
+| R-14 | Robustness | Agent reasoning fields empty or show JSON fallback in agentic pipelines | High | Medium | 🔴 High | Enforce structured output schema; validate reasoning field is non-empty before returning response |
 
 ---
 
