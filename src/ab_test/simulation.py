@@ -6,8 +6,8 @@ Simulates an A/B experiment comparing two LLM model variants:
   - Model A (Baseline):  mistral:7b-instruct with default system prompt
   - Model B (Challenger): mistral:7b-instruct with enhanced grounding system prompt
 
-Hypothesis: Model B (larger) produces higher groundedness scores
-than Model A, with acceptable latency trade-off.
+Hypothesis: Model B (enhanced grounding prompt) produces higher groundedness scores
+than Model A (default prompt), with acceptable latency trade-off.
 """
 
 import numpy as np

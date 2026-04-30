@@ -27,7 +27,7 @@
     "timestamp": "2026-03-22T10:00:00Z",
     "event_type": "experiment_start",
     "experiment_id": "EXP-001",
-    "description": "A/B test started: Model A (3B) vs Model B (8B)",
+    "description": "A/B test started: Model A (default prompt) vs Model B (enhanced grounding prompt)",
     "traffic_split": "50/50",
     "approved_by": "sgund12",
     "approval_method": "experiment_spec_review"
